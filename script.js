@@ -113,7 +113,10 @@ if (form && statusText) {
       name: String(formData.get("name") || "").trim(),
       email: String(formData.get("email") || "").trim(),
       message: String(formData.get("message") || "").trim(),
-      company: String(formData.get("company") || "").trim()
+      company: String(formData.get("company") || "").trim(),
+      _captcha: "false",
+      _subject: "New Contact from Portfolio",
+      _template: "table"
     };
 
     statusText.classList.remove("error");
@@ -149,7 +152,11 @@ if (form && statusText) {
       form.reset();
     } catch (error) {
       statusText.classList.add("error");
-      statusText.textContent = `${error.message} You can also email directly at shreyanshtripathi115@gmail.com.`;
+      if (window.location.protocol === "file:") {
+        statusText.textContent = "Cannot send form from check file directly. Please test on a local server or the deployed site.";
+      } else {
+        statusText.textContent = `${error.message} You can also email directly at shreyanshtripathi115@gmail.com.`;
+      }
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
