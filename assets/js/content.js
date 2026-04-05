@@ -44,9 +44,8 @@ const portfolioContent = {
           "Ask MCP - Agent designed for modular command processing and structured workflows.",
           "Ask AlloyDB - Database-focused agent enabling intelligent querying and interaction with AlloyDB."
         ],
-        note:
-          "Focused on scalable agent architectures for automation, data access, and real-time problem solving.",
-        accent: true
+      
+          
       }
     ],
     archive: [
