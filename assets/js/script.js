@@ -271,8 +271,20 @@ if (menuToggle && siteHeader) {
   });
 }
 
-navLinks.forEach((link) => {
-  link.addEventListener("click", closeMenu);
+const headerLinks = [...document.querySelectorAll(".site-header a")];
+
+headerLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    setTimeout(closeMenu, 100);
+  });
+});
+
+document.addEventListener("click", (event) => {
+  const isClickInside = siteHeader.contains(event.target);
+
+  if (!isClickInside && siteHeader.classList.contains("menu-open")) {
+    closeMenu();
+  }
 });
 
 window.addEventListener("resize", () => {
